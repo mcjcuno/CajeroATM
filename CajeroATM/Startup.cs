@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static CajeroATM.Data.DataBaseConfiguration;
 
 namespace CajeroATM
 {
@@ -30,6 +31,8 @@ namespace CajeroATM
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.Configure<DatabaseConfiguration>(Configuration.GetSection("DatabaseConfiguration"));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
